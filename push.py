@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Takes input from Centreon and creates an incident in ServiceNow"""
+"""Simple command line utility to create an incident in ServiceNow by passing a delimited string"""
 
 import sys
 import logging
