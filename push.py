@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""Simple command line utility to create an incident in ServiceNow by passing a delimited string"""
+"""Command line utility for creating incidents in ServiceNow with a related CI"""
 
 import sys
 import logging
