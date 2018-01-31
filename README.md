@@ -1,16 +1,23 @@
 snag
 ====
 
+Installing
+----------
+```bash
+$ git clone https://github.com/zetup/snag.git
+$ pip install -r requirements.txt
+```
+
 Usage
 -----
 ```bash
-$ python push.py <payload>
+$ python push.py "SERVER_NAME::description::short_description"
 ```
 
 Example
 -------
 ```bash
-$ python push.py "SETHNLS089::Server reboot::The server was rebooted"
+$ python push.py "SERVER01::Server reboot::The server was rebooted"
 ```
 
 Flow
