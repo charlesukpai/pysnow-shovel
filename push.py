@@ -6,7 +6,7 @@ import sys
 import logging
 import pysnow
 from pysnow.exceptions import NoResults
-from config import INSTANCE_NAME, USER_NAME, PASSWORD, CI_MISSING
+from config import INSTANCE_NAME, USER_NAME, PASSWORD, CI_MISSING_SYS_ID
 
 
 __author__ = "Robert Wikman, Zetup AB"
@@ -55,10 +55,10 @@ try:
 except NoResults:
     logging.warning('Missing CI for host: %s' % host_name)
     try:
-        ci = cmdb.get(query={'sys_id': CI_MISSING}).first()
-        ci_id = CI_MISSING
+        ci = cmdb.get(query={'sys_id': CI_MISSING_SYS_ID}).first()
+        ci_id = CI_MISSING_SYS_ID
     except NoResults:
-        logging.warning('Missing CI fallback with ID: %s' % CI_MISSING)
+        logging.warning('Missing CI fallback with ID: %s' % CI_MISSING_SYS_ID)
 
 if ci_id:
     try:
