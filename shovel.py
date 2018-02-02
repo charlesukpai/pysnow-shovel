@@ -70,7 +70,7 @@ incident.parameters.add_custom({'sysparm_input_display_value': True})
 try:
     result = incident.create(payload=payload)
     logging.debug(result)
-    logging.info('Incident created: %s' % result['number'])
+    logging.info('Record created: %s' % result['sys_id'])
 except Exception as e:  # catch all and log error
     logging.critical('Error creating incident: %s' % e)
     sys.exit(1)
