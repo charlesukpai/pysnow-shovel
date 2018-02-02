@@ -1,37 +1,41 @@
-snag
-====
+shovel-pysnow
+=============
 
-Command line utility for creating incidents in ServiceNow with a related CI
+Simple command line utility for creating new items in ServiceNow using the `pysnow library <http://pysnow.readthedocs.org/>`_.
+
+Values passed to fields with references to other tables are automatically resolved and properly inserted.
+
 
 Installing
 ----------
 ```bash
-$ git clone https://github.com/zetup/snag.git
-$ pip install -r requirements.txt
+
+    $ git clone https://github.com/zetup/shovel-pysnow.git
+    $ pip install -r requirements.txt
+
 ```
 
 Usage
 -----
 ```bash
-$ python push.py "SERVER_NAME::description::short_description"
+
+  --api_path API_PATH           ServiceNow API path, example: /table/incident
+  --payload PAYLOAD             Pass JSON payload string as an argument
+  --payload_file PAYLOAD_FILE   Read JSON payload from file
+  --config CONFIG_FILE          Config file, defaults to config.json
+  --log_file LOG_FILE           Send logs to this file and disable terminal logging
+
 ```
+
 
 Example
 -------
 ```bash
-$ python push.py "SERVER01::Server reboot::The server was rebooted"
+
+    $ python shovel.py --api_path /table/incident --payload '{"short_description": "snow", "description": "shovel"}'
+
 ```
 
-Flow
-----
-1) Parse STDIN
-3) Resolve CI
-4) Create incident
-
-Logging
--------
-Logs ends up in **snag.log**
-
-Config
+Author
 ------
-Config is set in **config.py**
+Robert Wikman, Zetup
