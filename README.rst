@@ -1,7 +1,7 @@
 shovel-pysnow
 =============
 
-Simple command line utility for creating new items in ServiceNow using the `pysnow library <http://pysnow.readthedocs.org/>`_.
+Simple command line utility for creating new items in ServiceNow using the `pysnow library <https://github.com/rbw0/pysnow>`_.
 
 Values passed to fields with references to other tables are automatically resolved and properly inserted.
 
