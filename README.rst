@@ -8,16 +8,16 @@ Values passed to fields with references to other tables are automatically resolv
 
 Installing
 ----------
-```bash
+.. code-block:: bash
 
     $ git clone https://github.com/zetup/shovel-pysnow.git
     $ pip install -r requirements.txt
 
-```
+
 
 Usage
 -----
-```bash
+.. code-block:: bash
 
   --api_path API_PATH           ServiceNow API path, example: /table/incident
   --payload PAYLOAD             Pass JSON payload string as an argument
@@ -25,16 +25,16 @@ Usage
   --config CONFIG_FILE          Config file, defaults to config.json
   --log_file LOG_FILE           Send logs to this file and disable terminal logging
 
-```
+
 
 
 Example
 -------
-```bash
+.. code-block:: bash
 
     $ python shovel.py --api_path /table/incident --payload '{"short_description": "snow", "description": "shovel"}'
 
-```
+
 
 Author
 ------
