@@ -12,20 +12,23 @@ import pysnow
 __author__ = "Robert Wikman, Zetup AB"
 
 
-def init_logger(log_file):
-    logger_config = {
-        'level': logging.INFO,
-        'format': '[%(asctime)s %(levelname)s] %(message)s',
-        'handlers': []
-    }
+def init_logger(log_file, debug):
+    logger = logging.getLogger('pysnow-shovel')
+
+    if debug:
+        logger.setLevel(logging.DEBUG)
+    else:
+        logger.setLevel(logging.INFO)
 
     if log_file:
-        logger_config['filename'] = log_file
+        handler = logging.FileHandler(log_file)
+        handler.setFormatter(logging.Formatter('[%(asctime)s %(levelname)s] %(message)s'))
     else:
-        print(open('banner.txt').read())
-        logger_config['handlers'].append(logging.StreamHandler(sys.stdout))
+        handler = logging.StreamHandler(sys.stdout)
+        handler.setFormatter(logging.Formatter('[%(levelname)s] %(message)s'))
 
-    logging.basicConfig(**logger_config)
+    logger.addHandler(handler)
+    return logger
 
 
 parser = argparse.ArgumentParser(description='Shovel into ServiceNow.')
@@ -58,7 +61,7 @@ else:
 
 config = json.load(open(args.config_file))
 
-init_logger(args.log_file)
+log = init_logger(args.log_file, debug=False)
 
 c = pysnow.Client(instance=config['instance_name'], user=config['user_name'], password=config['password'])
 
@@ -69,10 +72,10 @@ incident.parameters.add_custom({'sysparm_input_display_value': True})
 # noinspection PyBroadException
 try:
     result = incident.create(payload=payload)
-    logging.debug(result)
-    logging.info('Record created: %s' % result['sys_id'])
+    log.debug(result)
+    log.info('Record created: %s' % result['sys_id'])
 except Exception as e:  # catch all and log error
-    logging.critical('Error creating incident: %s' % e)
+    log.critical('Error creating incident: %s' % e)
     sys.exit(1)
 
 sys.exit(0)
