@@ -1,4 +1,4 @@
-shovel-pysnow
+pysnow-shovel
 =============
 
 Simple command line utility for creating new items in ServiceNow using the `pysnow library <https://github.com/rbw0/pysnow>`_.
@@ -10,7 +10,7 @@ Installing
 ----------
 .. code-block:: bash
 
-    $ git clone https://github.com/zetup/shovel-pysnow.git
+    $ git clone https://github.com/zetup/pysnow-shovel.git
     $ pip install -r requirements.txt
 
 
@@ -32,7 +32,7 @@ Example
 -------
 .. code-block:: bash
 
-    $ python shovel.py --api_path /table/incident --payload '{"short_description": "snow", "description": "shovel"}'
+    $ python shovel.py --api_path /table/incident --payload '{"short_description": "pysnow", "description": "shovel"}'
 
 
 
